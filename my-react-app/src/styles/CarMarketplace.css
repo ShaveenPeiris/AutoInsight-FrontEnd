@@ -4,11 +4,11 @@
 .marketplace-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding: 2rem;
-  font-family: 'Inter', sans-serif;
+  padding: 2.5rem 2rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text-main);
-  background: var(--bg-main);
-  transition: background 0.3s ease, color 0.3s ease;
+  background: transparent;
+  transition: color 0.3s ease;
 }
 
 .page-header {
@@ -16,26 +16,28 @@
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 2.5rem auto;
 }
 
 .filter-intro h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 800;
   margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
 }
 
 .gradient-text {
   background: var(--gradient-text);
   -webkit-background-clip: text;
-  background-clip: text; /* <-- Add this standard property */
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .filter-intro p {
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin: 0;
+  line-height: 1.5;
 }
 
 /* --- TOGGLE SWITCH --- */
@@ -104,12 +106,13 @@ input:checked + .slider:before {
 /* --- FILTER SECTION (NEW GRID LAYOUT) --- */
 .glass-panel {
   background: var(--bg-panel);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
-  border-radius: 24px;
+  border-radius: 20px;
   padding: 2.5rem;
   max-width: 1000px;
-  margin: 0 auto 4rem auto;
+  margin: 0 auto 3.5rem auto;
   box-shadow: var(--shadow-panel);
   transition: all 0.3s ease;
 }
@@ -158,23 +161,24 @@ input:checked + .slider:before {
   background: var(--bg-input);
   color: var(--text-main);
   border: 1px solid var(--glass-border);
-  padding: 0.8rem 1rem;
-  border-radius: 12px;
-  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: 'Inter', system-ui, sans-serif;
   outline: none;
   width: 100%;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   cursor: pointer;
   appearance: auto;
 }
 
 .filter-item select:focus {
   border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .filter-item select:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -193,16 +197,21 @@ input:checked + .slider:before {
   background: var(--gradient-blue);
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.5);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px -4px rgba(59, 130, 246, 0.4);
 }
 
 .btn-glow-blue:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px -10px rgba(37, 99, 235, 0.7);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -6px rgba(59, 130, 246, 0.5);
+}
+
+.btn-glow-blue:active {
+  transform: translateY(0);
 }
 
 /* --- CAR SHOWCASE GRID --- */
@@ -230,18 +239,20 @@ input:checked + .slider:before {
 /* --- GLASS CAR CARD --- */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   padding: 1rem;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
 }
 
 .glass-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-card);
-  border-color: var(--primary-blue);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-panel);
+  border-color: rgba(59, 130, 246, 0.25);
 }
 
 .card-image-wrapper {
@@ -249,7 +260,7 @@ input:checked + .slider:before {
   height: 200px;
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .car-image {
@@ -369,25 +380,26 @@ input:checked + .slider:before {
 
 .btn-glass-purple {
   width: 100%;
-  background: rgba(139, 92, 246, 0.1);
+  background: rgba(99, 102, 241, 0.08);
   color: #a78bfa;
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  padding: 1rem;
-  border-radius: 12px;
+  border: 1px solid rgba(99, 102, 241, 0.20);
+  padding: 0.85rem;
+  border-radius: 10px;
   font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.25s ease;
 }
 
 .light-theme .btn-glass-purple {
-    background: rgba(139, 92, 246, 0.05);
-    color: #7c3aed;
-    border-color: rgba(139, 92, 246, 0.2);
+  background: rgba(99, 102, 241, 0.05);
+  color: #6366f1;
+  border-color: rgba(99, 102, 241, 0.15);
 }
 
 .btn-glass-purple:hover {
   background: var(--gradient-purple);
   color: white;
   border-color: transparent;
-  box-shadow: 0 10px 20px -10px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 4px 16px -4px rgba(99, 102, 241, 0.4);
 }

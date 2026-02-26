@@ -7,8 +7,8 @@ import Footer from './component/Footer';
 import './styles/App.css'; 
 
 const App: React.FC = () => {
-  // 1. Changed default state to false (Light Mode)
-  const [darkMode, setDarkMode] = useState(false);
+  // Default to dark mode to match the professional dark theme
+  const [darkMode, setDarkMode] = useState(true);
 
   return (
     <Router>

@@ -1,0 +1,80 @@
+/* --- HEADER & NAVBAR --- */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+/* --- BIGGER, CLEARER LOGO --- */
+.app-logo {
+  height: 100px; /* Massively increased size */
+  object-fit: contain;
+  /* Adds a subtle light glow in dark mode so it stands out */
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.app-logo:hover {
+  transform: scale(1.02);
+}
+
+/* Adds a dark shadow in light mode for perfect contrast */
+.light-theme .app-logo {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+}
+
+/* --- STANDALONE TOGGLE SWITCH --- */
+.standalone-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px; width: 20px;
+  left: 4px; bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider { background-color: var(--primary-blue); }
+input:checked + .slider:before { transform: translateX(22px); }

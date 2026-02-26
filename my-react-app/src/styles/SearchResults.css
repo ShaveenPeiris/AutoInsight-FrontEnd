@@ -1,0 +1,267 @@
+/* --- MAIN WRAPPER --- */
+.results-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  
+  /* Ensures the wrapper stretches, but remains transparent to let the App.css background show */
+  min-height: 100%; 
+  background-color: transparent; 
+}
+
+.results-header {
+  margin-bottom: 2rem;
+}
+
+.results-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.results-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* --- REUSABLE GLASS PANEL --- */
+.glass-panel-small {
+  background: var(--bg-panel);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+}
+
+/* --- ANALYTICS DASHBOARD (FLEXBOX) --- */
+.analytics-dashboard {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap; 
+}
+
+.analytics-main {
+  flex: 2; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 300px;
+}
+
+.analytics-sidebar {
+  flex: 1; 
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flexbox for the top stats */
+.stats-overview-flex {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stats-overview-flex .stat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-label {
+  color: var(--text-label);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  color: var(--text-main);
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.stat-value .currency, .stat-value .unit {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* --- SVG GRAPH SECTION --- */
+.graph-card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.graph-header h4 {
+  color: var(--text-main);
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.trend-badge {
+  background: var(--success-green);
+  color: var(--success-text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.svg-graph-container {
+  width: 100%;
+  position: relative;
+}
+
+.price-chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.grid-line {
+  stroke: var(--glass-border);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.chart-line {
+  stroke-linecap: round;
+  filter: drop-shadow(0px 8px 12px rgba(59, 130, 246, 0.4));
+}
+
+.graph-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* --- PREDICTIONS SIDEBAR --- */
+.predictions-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.predictions-card h4 {
+  color: var(--text-main);
+  font-size: 1.2rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.prediction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.pred-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-input);
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.pred-item.highlight {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.pred-time {
+  color: var(--text-label);
+  font-weight: 600;
+}
+
+.pred-item.highlight .pred-time {
+  color: var(--primary-blue);
+}
+
+.pred-price {
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.divider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: 0.5rem 0;
+}
+
+/* --- FLEXBOX RESULTS GRID --- */
+.section-title {
+  color: var(--text-main);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.flex-results-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.flex-card {
+  flex: 1;
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.year-badge {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-blue);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+/* --- SIMILAR CHOICES SECTION --- */
+.similar-section {
+  margin-top: 5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}

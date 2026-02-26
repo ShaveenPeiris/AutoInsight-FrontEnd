@@ -1,0 +1,80 @@
+/* --- GLOBAL THEME VARIABLES --- */
+:root, .light-theme {
+  /* Default Theme is now Light Blue! */
+  --bg-main: radial-gradient(circle at 50% 30%, #dbeafe 0%, #93c5fd 100%); 
+  --bg-panel: rgba(255, 255, 255, 0.65); 
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-input: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(59, 130, 246, 0.2);
+  --shadow-card: 0 10px 25px rgba(59, 130, 246, 0.1);
+  --shadow-panel: 0 15px 30px rgba(59, 130, 246, 0.15);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-label: #334155;
+
+  --nav-bg: rgba(219, 234, 254, 0.85); 
+  --footer-bg: #eff6ff; 
+  --footer-text: #475569;
+  --footer-heading: #0f172a;
+  --footer-border: rgba(59, 130, 246, 0.15);
+  --footer-icon-bg: rgba(59, 130, 246, 0.1);
+
+  /* Shared Colors */
+  --primary-blue: #3b82f6;
+  --gradient-blue: linear-gradient(135deg, #2563eb, #3b82f6);
+  --gradient-purple: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --gradient-text: linear-gradient(90deg, #a855f7, #60a5fa);
+  --success-green: rgba(16, 185, 129, 0.2);
+  --success-text: #34d399;
+  --danger-red: rgba(239, 68, 68, 0.2);
+  --danger-text: #f87171;
+}
+
+/* Dark Theme Overrides */
+.dark-theme {
+  /* Deep Space Colors activate when the toggle is clicked */
+  --bg-main: radial-gradient(circle at 50% 30%, #172033 0%, #070b19 70%);
+  --bg-panel: rgba(30, 41, 59, 0.4);
+  --bg-card: rgba(15, 23, 42, 0.6);
+  --bg-input: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --text-label: #94a3b8;
+  
+  --nav-bg: rgba(10, 15, 28, 0.9);
+  --footer-bg: #0b1120;
+  --footer-text: #9ca3af;
+  --footer-heading: #ffffff;
+  --footer-border: rgba(255, 255, 255, 0.05);
+  --footer-icon-bg: rgba(255, 255, 255, 0.1);
+  
+  --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --shadow-panel: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- GLOBAL RESETS & LAYOUT --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-main);
+  min-height: 100vh;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-main); 
+  color: var(--text-main);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.main-content {
+  flex: 1; 
+}

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Gauge, Settings2, ClipboardCheck, TrendingUp, Flame, ArrowRight } from 'lucide-react';
+import { 
+  Gauge, Settings2, ClipboardCheck, Flame, ArrowRight, 
+  Search, Car, MapPin, Calendar, DollarSign, SlidersHorizontal,
+  ChevronDown, RotateCcw, Sparkles
+} from 'lucide-react';
 import { MarketplaceSkeleton } from '../component/Skeleton';
 import '../styles/CarMarketplace.css';
 
@@ -60,92 +64,150 @@ const CarMarketplace: React.FC = () => {
     });
   };
 
-  // <-- 3. Created the function to handle the button click
   const handleSearch = () => {
     navigate('/results'); 
   };
 
+  const handleReset = () => {
+    setFilters({ brand: 'All', model: 'All', condition: 'All', priceRange: 'All', city: 'All', mileageRange: 'All', yearRange: 'All' });
+  };
+
+  const activeFilterCount = Object.values(filters).filter(v => v !== 'All').length;
   const availableModels = filters.brand === 'All' ? [] : MODELS[filters.brand];
 
   return (
     <div className="marketplace-wrapper">
       <div className="page-header">
         <div className="filter-intro">
+          <div className="filter-intro-badge">
+            <Sparkles size={14} />
+            <span>AI-Powered Search</span>
+          </div>
           <h2>Find Your <span className="gradient-text">Perfect Vehicle</span></h2>
-          <p>Use our detailed filters to search the extensive inventory.</p>
+          <p>Use our detailed filters to search across thousands of listings in real-time.</p>
         </div>
       </div>
 
       <section className="glass-panel filter-section">
+        <div className="filter-section-header">
+          <div className="filter-section-title">
+            <SlidersHorizontal size={18} />
+            <h3>Search Filters</h3>
+            {activeFilterCount > 0 && (
+              <span className="filter-count-badge">{activeFilterCount}</span>
+            )}
+          </div>
+          {activeFilterCount > 0 && (
+            <button className="filter-reset-btn" onClick={handleReset}>
+              <RotateCcw size={14} />
+              Clear All
+            </button>
+          )}
+        </div>
+
         <div className="filter-form-grid">
-          <div className="filter-row">
-            <div className="filter-item mandatory">
-              <label>Make <span className="required">*</span></label>
-              <select name="brand" value={filters.brand} onChange={handleFilterChange}>
-                <option value="All">Any Make</option>
-                {BRANDS.map(brand => <option key={brand} value={brand}>{brand}</option>)}
-              </select>
-            </div>
-            <div className="filter-item mandatory">
-              <label>Model <span className="required">*</span></label>
-              <select name="model" value={filters.model} onChange={handleFilterChange} disabled={filters.brand === 'All'}>
-                <option value="All">Any Model</option>
-                {availableModels.map(model => <option key={model} value={model}>{model}</option>)}
-              </select>
-            </div>
-          </div>
-
-          <div className="filter-row three-col">
-            <div className="filter-item">
-              <label>Condition</label>
-              <select name="condition" value={filters.condition} onChange={handleFilterChange}>
-                <option value="All">Any</option>
-                <option value="Unregistered">Brand New</option>
-                <option value="Registered">Used</option>
-                <option value="Recondition">Used</option>
-              </select>
-            </div>
-            <div className="filter-item">
-              <label>Price Range</label>
-              <select name="priceRange" value={filters.priceRange} onChange={handleFilterChange}>
-                <option value="All">Any Price</option>
-                <option value="Below10M">Below 10M LKR</option>
-                <option value="10Mto20M">10M - 20M LKR</option>
-                <option value="Above20M">Above 20M LKR</option>
-              </select>
-            </div>
-            <div className="filter-item">
-              <label>City</label>
-              <select name="city" value={filters.city} onChange={handleFilterChange}>
-                <option value="All">Any City</option>
-                {CITIES.map(city => <option key={city} value={city}>{city}</option>)}
-              </select>
+          {/* Primary Filters */}
+          <div className="filter-group">
+            <span className="filter-group-label">Primary</span>
+            <div className="filter-row">
+              <div className="filter-item mandatory">
+                <label><Car size={14} /> Make <span className="required">*</span></label>
+                <div className="select-wrapper">
+                  <select name="brand" value={filters.brand} onChange={handleFilterChange}>
+                    <option value="All">Any Make</option>
+                    {BRANDS.map(brand => <option key={brand} value={brand}>{brand}</option>)}
+                  </select>
+                  <ChevronDown size={16} className="select-chevron" />
+                </div>
+              </div>
+              <div className="filter-item mandatory">
+                <label><Car size={14} /> Model <span className="required">*</span></label>
+                <div className="select-wrapper">
+                  <select name="model" value={filters.model} onChange={handleFilterChange} disabled={filters.brand === 'All'}>
+                    <option value="All">Any Model</option>
+                    {availableModels.map(model => <option key={model} value={model}>{model}</option>)}
+                  </select>
+                  <ChevronDown size={16} className="select-chevron" />
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="filter-row three-col">
-            <div className="filter-item">
-              <label>Mileage</label>
-              <select name="mileageRange" value={filters.mileageRange} onChange={handleFilterChange}>
-                <option value="All">Any Mileage</option>
-                <option value="Below50k">Below 50,000 km</option>
-                <option value="50kto100k">50k - 100k km</option>
-                <option value="Above100k">Above 100k km</option>
-              </select>
+          {/* Secondary Filters */}
+          <div className="filter-group">
+            <span className="filter-group-label">Details</span>
+            <div className="filter-row three-col">
+              <div className="filter-item">
+                <label><ClipboardCheck size={14} /> Condition</label>
+                <div className="select-wrapper">
+                  <select name="condition" value={filters.condition} onChange={handleFilterChange}>
+                    <option value="All">Any</option>
+                    <option value="Unregistered">Brand New</option>
+                    <option value="Registered">Used</option>
+                    <option value="Recondition">Reconditioned</option>
+                  </select>
+                  <ChevronDown size={16} className="select-chevron" />
+                </div>
+              </div>
+              <div className="filter-item">
+                <label><DollarSign size={14} /> Price Range</label>
+                <div className="select-wrapper">
+                  <select name="priceRange" value={filters.priceRange} onChange={handleFilterChange}>
+                    <option value="All">Any Price</option>
+                    <option value="Below10M">Below 10M LKR</option>
+                    <option value="10Mto20M">10M – 20M LKR</option>
+                    <option value="Above20M">Above 20M LKR</option>
+                  </select>
+                  <ChevronDown size={16} className="select-chevron" />
+                </div>
+              </div>
+              <div className="filter-item">
+                <label><MapPin size={14} /> City</label>
+                <div className="select-wrapper">
+                  <select name="city" value={filters.city} onChange={handleFilterChange}>
+                    <option value="All">Any City</option>
+                    {CITIES.map(city => <option key={city} value={city}>{city}</option>)}
+                  </select>
+                  <ChevronDown size={16} className="select-chevron" />
+                </div>
+              </div>
             </div>
-             <div className="filter-item">
-              <label>Year Range</label>
-              <select name="yearRange" value={filters.yearRange} onChange={handleFilterChange}>
-                <option value="All">Any Year</option>
-                {YEARS.map(year => <option key={year} value={year}>{year}</option>)}
-              </select>
-            </div>
-             <div className="filter-item"></div>
           </div>
 
-          <div className="filter-row search-row">
-            {/* <-- 4. Attached the onClick handler to the button! */}
-            <button className="btn-glow-blue search-btn" onClick={handleSearch}>Search</button>
+          {/* Additional Filters */}
+          <div className="filter-group">
+            <span className="filter-group-label">More Options</span>
+            <div className="filter-row">
+              <div className="filter-item">
+                <label><Gauge size={14} /> Mileage</label>
+                <div className="select-wrapper">
+                  <select name="mileageRange" value={filters.mileageRange} onChange={handleFilterChange}>
+                    <option value="All">Any Mileage</option>
+                    <option value="Below50k">Below 50,000 km</option>
+                    <option value="50kto100k">50k – 100k km</option>
+                    <option value="Above100k">Above 100k km</option>
+                  </select>
+                  <ChevronDown size={16} className="select-chevron" />
+                </div>
+              </div>
+              <div className="filter-item">
+                <label><Calendar size={14} /> Year Range</label>
+                <div className="select-wrapper">
+                  <select name="yearRange" value={filters.yearRange} onChange={handleFilterChange}>
+                    <option value="All">Any Year</option>
+                    {YEARS.map(year => <option key={year} value={year}>{year}</option>)}
+                  </select>
+                  <ChevronDown size={16} className="select-chevron" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="filter-actions">
+            <button className="btn-glow-blue search-btn" onClick={handleSearch}>
+              <Search size={18} />
+              Search Vehicles
+            </button>
           </div>
         </div>
       </section>

@@ -65,7 +65,11 @@ const CarMarketplace: React.FC = () => {
   };
 
   const handleSearch = () => {
-    navigate('/results'); 
+    navigate('/results', { state: { filters } }); 
+  };
+
+  const handleViewAnalysis = (brand: string, model: string) => {
+    navigate('/results', { state: { filters: { ...filters, brand, model } } });
   };
 
   const handleReset = () => {
@@ -260,7 +264,7 @@ const CarMarketplace: React.FC = () => {
                   </div>
                 </div>
                 
-                <button className="btn-glass-purple">View Full Analysis <ArrowRight size={14} className="inline-icon" /></button>
+                <button className="btn-glass-purple" onClick={() => handleViewAnalysis(car.brand, car.model)}>View Full Analysis <ArrowRight size={14} className="inline-icon" /></button>
               </div>
             </div>
           ))}

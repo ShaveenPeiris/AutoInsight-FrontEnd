@@ -12,6 +12,29 @@
   margin-bottom: 2.5rem;
 }
 
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: 'Inter', system-ui, sans-serif;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  background: rgba(59, 130, 246, 0.06);
+}
+
 .results-header h2 {
   font-size: 2rem;
   font-weight: 800;
@@ -27,6 +50,24 @@
   margin: 0;
   line-height: 1.5;
   transition: color 0.3s ease;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.filter-chip {
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-blue);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
 }
 
 /* --- REUSABLE GLASS PANEL --- */

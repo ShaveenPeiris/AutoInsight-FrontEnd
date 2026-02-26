@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Gauge, Settings2, ClipboardCheck, TrendingUp } from 'lucide-react';
+import { SearchResultsSkeleton } from '../component/Skeleton';
 import '../styles/SearchResults.css';
 
 interface CarResult {
@@ -30,6 +31,16 @@ const SIMILAR_VEHICLES: CarResult[] = [
 ];
 
 const SearchResults: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate data fetch — replace with real API call
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <SearchResultsSkeleton />;
+
   return (
     <div className="results-wrapper">
       

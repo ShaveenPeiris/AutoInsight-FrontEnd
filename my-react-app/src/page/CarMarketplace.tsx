@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Gauge, Settings2, ClipboardCheck, TrendingUp, Flame, ArrowRight } from 'lucide-react';
+import { MarketplaceSkeleton } from '../component/Skeleton';
 import '../styles/CarMarketplace.css';
 
 interface Car {
@@ -35,11 +36,20 @@ const TOP_SELLING_CARS: Car[] = [
 ];
 
 const CarMarketplace: React.FC = () => {
-  const navigate = useNavigate(); // <-- 2. Initialized the hook
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const [filters, setFilters] = useState({
     brand: 'All', model: 'All', condition: 'All', priceRange: 'All', city: 'All', mileageRange: 'All', yearRange: 'All'
   });
+
+  useEffect(() => {
+    // Simulate data fetch — replace with real API call
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <MarketplaceSkeleton />;
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;

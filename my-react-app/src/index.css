@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background-color: #030712;
+  background: var(--bg-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Instagram, Facebook, Linkedin, ArrowUp, MessageCircle } from 'lucide-react';
 import '../styles/Footer.css';
 
 const Footer: React.FC = () => {
@@ -9,9 +10,9 @@ const Footer: React.FC = () => {
           <h2 className="footer-logo-text">AutoInsight</h2>
           <p>Vehicle market analytics for Sri Lanka<br/>— pricing, trends & actionable insights.</p>
           <div className="social-icons">
-            <span className="icon-circle">📷</span> 
-            <span className="icon-circle">📘</span>
-            <span className="icon-circle">💼</span>
+            <span className="icon-circle"><Instagram size={18} /></span>
+            <span className="icon-circle"><Facebook size={18} /></span>
+            <span className="icon-circle"><Linkedin size={18} /></span>
           </div>
           <a href="mailto:info.autoinsight@gmail.com" className="footer-email">info.autoinsight@gmail.com</a>
         </div>
@@ -56,8 +57,8 @@ const Footer: React.FC = () => {
 
       {/* Floating Action Buttons */}
       <div className="floating-buttons">
-        <button className="float-btn up-btn" onClick={() => window.scrollTo(0,0)}>↑</button>
-        <button className="float-btn chat-btn">💬</button>
+        <button className="float-btn up-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><ArrowUp size={20} /></button>
+        <button className="float-btn chat-btn"><MessageCircle size={20} /></button>
       </div>
     </footer>
   );

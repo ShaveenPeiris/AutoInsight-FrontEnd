@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // <-- 1. Imported the navigation hook
+import { useNavigate } from 'react-router-dom';
+import { Gauge, Settings2, ClipboardCheck, TrendingUp, Flame, ArrowRight } from 'lucide-react';
 import '../styles/CarMarketplace.css';
 
 interface Car {
@@ -141,7 +142,7 @@ const CarMarketplace: React.FC = () => {
 
       <section className="inventory-section">
         <div className="section-title">
-          <h3>🔥 Top Selling Vehicles</h3>
+          <h3><Flame size={22} className="inline-icon" /> Top Selling Vehicles</h3>
         </div>
         <div className="car-showcase-grid">
           {TOP_SELLING_CARS.map(car => (
@@ -165,21 +166,21 @@ const CarMarketplace: React.FC = () => {
                 
                 <div className="stats-row">
                   <div className="stat-box">
-                    <span className="stat-icon">⏱</span>
+                    <span className="stat-icon"><Gauge size={16} /></span>
                     <div className="stat-text">
                       <strong>{car.mileage.toLocaleString()}</strong>
                       <span>km</span>
                     </div>
                   </div>
                   <div className="stat-box">
-                    <span className="stat-icon">⚙️</span>
+                    <span className="stat-icon"><Settings2 size={16} /></span>
                     <div className="stat-text">
                       <strong>{car.transmission}</strong>
                       <span>Trans</span>
                     </div>
                   </div>
                   <div className="stat-box">
-                    <span className="stat-icon">📋</span>
+                    <span className="stat-icon"><ClipboardCheck size={16} /></span>
                     <div className="stat-text">
                       <strong>{car.condition}</strong>
                       <span>Status</span>
@@ -187,7 +188,7 @@ const CarMarketplace: React.FC = () => {
                   </div>
                 </div>
                 
-                <button className="btn-glass-purple">View Full Analysis →</button>
+                <button className="btn-glass-purple">View Full Analysis <ArrowRight size={14} className="inline-icon" /></button>
               </div>
             </div>
           ))}

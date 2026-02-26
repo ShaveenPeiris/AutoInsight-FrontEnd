@@ -1,4 +1,5 @@
 import React from 'react';
+import { Gauge, Settings2, ClipboardCheck, TrendingUp } from 'lucide-react';
 import '../styles/SearchResults.css';
 
 interface CarResult {
@@ -53,7 +54,7 @@ const SearchResults: React.FC = () => {
           <div className="graph-card glass-panel-small">
             <div className="graph-header">
               <h4>Price Trend (2000 - 2026)</h4>
-              <span className="trend-badge positive">↗ Increasing</span>
+              <span className="trend-badge positive"><TrendingUp size={14} /> Increasing</span>
             </div>
             <div className="svg-graph-container">
               <svg viewBox="0 0 500 200" className="price-chart">
@@ -131,15 +132,15 @@ const SearchResults: React.FC = () => {
                 
                 <div className="stats-row">
                   <div className="stat-box">
-                    <span className="stat-icon">⏱</span>
+                    <span className="stat-icon"><Gauge size={16} /></span>
                     <div className="stat-text"><strong>{car.mileage.toLocaleString()}</strong><span>km</span></div>
                   </div>
                   <div className="stat-box">
-                    <span className="stat-icon">⚙️</span>
+                    <span className="stat-icon"><Settings2 size={16} /></span>
                     <div className="stat-text"><strong>{car.transmission}</strong><span>Trans</span></div>
                   </div>
                   <div className="stat-box">
-                    <span className="stat-icon">📋</span>
+                    <span className="stat-icon"><ClipboardCheck size={16} /></span>
                     <div className="stat-text"><strong>{car.condition}</strong><span>Status</span></div>
                   </div>
                 </div>
@@ -159,7 +160,6 @@ const SearchResults: React.FC = () => {
         <div className="flex-results-grid">
           {SIMILAR_VEHICLES.map(car => (
             <div key={car.id} className="glass-card flex-card">
-              {/* Image wrapper has been entirely deleted from these cards */}
               <div className="card-content">
                 <div className="flex-row-between">
                   <h4 className="car-title">{car.name}</h4>
@@ -172,15 +172,15 @@ const SearchResults: React.FC = () => {
                 
                 <div className="stats-row">
                   <div className="stat-box">
-                    <span className="stat-icon">⏱</span>
+                    <span className="stat-icon"><Gauge size={16} /></span>
                     <div className="stat-text"><strong>{car.mileage.toLocaleString()}</strong><span>km</span></div>
                   </div>
                   <div className="stat-box">
-                    <span className="stat-icon">⚙️</span>
+                    <span className="stat-icon"><Settings2 size={16} /></span>
                     <div className="stat-text"><strong>{car.transmission}</strong><span>Trans</span></div>
                   </div>
                   <div className="stat-box">
-                    <span className="stat-icon">📋</span>
+                    <span className="stat-icon"><ClipboardCheck size={16} /></span>
                     <div className="stat-text"><strong>{car.condition}</strong><span>Status</span></div>
                   </div>
                 </div>

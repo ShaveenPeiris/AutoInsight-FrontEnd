@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   Gauge, Settings2, ClipboardCheck, Flame, ArrowRight, 
   Search, Car, MapPin, Calendar, DollarSign, SlidersHorizontal,
@@ -39,13 +39,18 @@ const TOP_SELLING_CARS: Car[] = [
   { id: '3', brand: 'Toyota', model: 'Yaris', price: 11.0, mileage: 25000, transmission: 'Auto', condition: 'Registered', imageUrl: 'https://images.unsplash.com/photo-1590362891991-f7009743c726?auto=format&fit=crop&w=600&q=80', tag: 'Great Value', tagColor: '#10b981', trend: '-2.1%' },
 ];
 
+const DEFAULT_FILTERS = {
+  brand: 'All', model: 'All', condition: 'All', priceRange: 'All', city: 'All', mileageRange: 'All', yearRange: 'All'
+};
+
 const CarMarketplace: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState(true);
 
-  const [filters, setFilters] = useState({
-    brand: 'All', model: 'All', condition: 'All', priceRange: 'All', city: 'All', mileageRange: 'All', yearRange: 'All'
-  });
+  // Restore filters from navigation state (e.g. when coming back from SearchResults)
+  const savedFilters = (location.state as { filters?: typeof DEFAULT_FILTERS } | null)?.filters;
+  const [filters, setFilters] = useState(savedFilters ?? DEFAULT_FILTERS);
 
   useEffect(() => {
     // Simulate data fetch — replace with real API call
@@ -73,7 +78,7 @@ const CarMarketplace: React.FC = () => {
   };
 
   const handleReset = () => {
-    setFilters({ brand: 'All', model: 'All', condition: 'All', priceRange: 'All', city: 'All', mileageRange: 'All', yearRange: 'All' });
+    setFilters(DEFAULT_FILTERS);
   };
 
   const activeFilterCount = Object.values(filters).filter(v => v !== 'All').length;

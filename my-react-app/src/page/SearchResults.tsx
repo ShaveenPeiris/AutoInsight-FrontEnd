@@ -201,7 +201,7 @@ const SearchResults: React.FC = () => {
     <div className="results-wrapper">
       
       <div className="results-header">
-        <button className="back-btn" onClick={() => navigate('/')}>
+        <button className="back-btn" onClick={() => navigate('/', { state: { filters } })}>
           <ArrowLeft size={18} />
           Back to Search
         </button>

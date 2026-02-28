@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   Gauge, Settings2, ClipboardCheck, Flame, ArrowRight, 
   Search, Car, MapPin, Calendar, DollarSign, SlidersHorizontal,
-  ChevronDown, RotateCcw, Sparkles
+  ChevronDown, RotateCcw, Sparkles, Zap, Shield, TrendingUp, Clock
 } from 'lucide-react';
 import { MarketplaceSkeleton } from '../component/Skeleton';
 import '../styles/CarMarketplace.css';
@@ -86,11 +86,81 @@ const CarMarketplace: React.FC = () => {
 
   return (
     <div className="marketplace-wrapper">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-background">
+          <div className="hero-gradient-orb hero-orb-1"></div>
+          <div className="hero-gradient-orb hero-orb-2"></div>
+        </div>
+        <div className="hero-content">
+          <div className="hero-badge">
+            <Zap size={14} />
+            <span>AI Powered Car Discovery</span>
+          </div>
+          <h1 className="hero-title">
+            Find Your Next Car<br />
+            <span className="hero-highlight">In 60 Seconds</span>
+          </h1>
+          <p className="hero-subtitle">
+            Skip the hassle. Our smart search analyzes thousands of listings to match you 
+            with the perfect vehicle fast, transparent, and stress free.
+          </p>
+          <div className="hero-cta-group">
+            <button className="hero-cta-primary" onClick={handleSearch}>
+              <Search size={18} />
+              Start Searching Now
+            </button>
+            <button className="hero-cta-secondary" onClick={() => document.querySelector('.filter-section')?.scrollIntoView({ behavior: 'smooth' })}>
+              <SlidersHorizontal size={16} />
+              Use Filters
+            </button>
+          </div>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="hero-stat-icon">
+                <Car size={18} />
+              </div>
+              <div className="hero-stat-info">
+                <span className="hero-stat-value">12,500+</span>
+                <span className="hero-stat-label">Active Listings</span>
+              </div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-icon">
+                <Shield size={18} />
+              </div>
+              <div className="hero-stat-info">
+                <span className="hero-stat-value">100%</span>
+                <span className="hero-stat-label">Verified Sellers</span>
+              </div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-icon">
+                <TrendingUp size={18} />
+              </div>
+              <div className="hero-stat-info">
+                <span className="hero-stat-value">2,300</span>
+                <span className="hero-stat-label">Sold This Month</span>
+              </div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-icon">
+                <Clock size={18} />
+              </div>
+              <div className="hero-stat-info">
+                <span className="hero-stat-value">~60s</span>
+                <span className="hero-stat-label">Avg. Search Time</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="page-header">
         <div className="filter-intro">
           <div className="filter-intro-badge">
             <Sparkles size={14} />
-            <span>AI-Powered Search</span>
+            <span>AI Powered Search</span>
           </div>
           <h2>Find Your <span className="gradient-text">Perfect Vehicle</span></h2>
           <p>Use our detailed filters to search across thousands of listings in real-time.</p>
